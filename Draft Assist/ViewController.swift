@@ -10,12 +10,15 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var PlayerList: UITableView!
+    @IBOutlet weak var RecommendedPlayer: UILabel!
     
     var playerArray: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        RecommendedPlayer.text = myMethod()
         
         PlayerList.delegate = self
         PlayerList.dataSource = self
@@ -42,5 +45,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return playerArray.count
     }
 
+    func myMethod() -> String
+    {
+        return "abc"
+    }
 }
 
