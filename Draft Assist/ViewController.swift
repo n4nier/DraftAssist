@@ -8,11 +8,29 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate {
     @IBOutlet weak var PlayerList: UITableView!
     @IBOutlet weak var RecommendedPlayer: UILabel!
     
     var playerArray: [String] = []
+    
+    @IBAction func Options(_ sender: AnyObject) {
+        let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "popOverID")
+        
+        popController.modalPresentationStyle = UIModalPresentationStyle.popover
+        popController.preferredContentSize = CGSize(width: 200, height: 85)
+        
+        popController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.up
+        popController.popoverPresentationController?.delegate = self
+        popController.popoverPresentationController?.sourceView = (sender as! UIView)
+        popController.popoverPresentationController?.sourceRect = sender.bounds
+        
+        self.present(popController, animated: true, completion: nil)
+    }
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

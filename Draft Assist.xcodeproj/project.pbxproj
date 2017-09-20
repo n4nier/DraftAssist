@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C95534F91F71A1FF006EB0D8 /* OptionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95534F81F71A1FF006EB0D8 /* OptionController.swift */; };
+		C95534FB1F71E116006EB0D8 /* DraftSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95534FA1F71E116006EB0D8 /* DraftSetup.swift */; };
 		C9A109CA1F66FD2C00F92B2A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A109C91F66FD2C00F92B2A /* AppDelegate.swift */; };
 		C9A109CC1F66FD2C00F92B2A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A109CB1F66FD2C00F92B2A /* ViewController.swift */; };
 		C9A109CF1F66FD2C00F92B2A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9A109CD1F66FD2C00F92B2A /* Main.storyboard */; };
@@ -35,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C95534F81F71A1FF006EB0D8 /* OptionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionController.swift; sourceTree = "<group>"; };
+		C95534FA1F71E116006EB0D8 /* DraftSetup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DraftSetup.swift; sourceTree = "<group>"; };
 		C9A109C61F66FD2C00F92B2A /* Draft Assist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Draft Assist.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9A109C91F66FD2C00F92B2A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9A109CB1F66FD2C00F92B2A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +110,8 @@
 				C9A109D21F66FD2C00F92B2A /* LaunchScreen.storyboard */,
 				C9A109D51F66FD2C00F92B2A /* Info.plist */,
 				C9A109F71F67226A00F92B2A /* PlayerListCell.swift */,
+				C95534F81F71A1FF006EB0D8 /* OptionController.swift */,
+				C95534FA1F71E116006EB0D8 /* DraftSetup.swift */,
 			);
 			path = "Draft Assist";
 			sourceTree = "<group>";
@@ -263,8 +269,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C95534FB1F71E116006EB0D8 /* DraftSetup.swift in Sources */,
 				C9A109F81F67226A00F92B2A /* PlayerListCell.swift in Sources */,
 				C9A109CC1F66FD2C00F92B2A /* ViewController.swift in Sources */,
+				C95534F91F71A1FF006EB0D8 /* OptionController.swift in Sources */,
 				C9A109CA1F66FD2C00F92B2A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -514,6 +522,7 @@
 				C9A109F01F66FD2C00F92B2A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C9A109F11F66FD2C00F92B2A /* Build configuration list for PBXNativeTarget "Draft AssistTests" */ = {
 			isa = XCConfigurationList;
@@ -522,6 +531,7 @@
 				C9A109F31F66FD2C00F92B2A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C9A109F41F66FD2C00F92B2A /* Build configuration list for PBXNativeTarget "Draft AssistUITests" */ = {
 			isa = XCConfigurationList;
@@ -530,6 +540,7 @@
 				C9A109F61F66FD2C00F92B2A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
