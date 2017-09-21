@@ -43,14 +43,14 @@ class DraftSetup: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         
         if tableView == self.RoundList {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "roundCell") as! PlayerListCell
-            cell.PlayerName.text = roundArray[indexPath.row]
-            return cell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "testCell1")
+            cell?.textLabel!.text = roundArray[indexPath.row]
+            return cell!
         }
         else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "playerCell") as! PlayerListCell
-            cell.PlayerName.text = playerArray[indexPath.row]
-            return cell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "testCell")
+            cell?.textLabel!.text = playerArray[indexPath.row]
+            return cell!
         }
     }
     

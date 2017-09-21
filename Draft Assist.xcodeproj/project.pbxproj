@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C95534F91F71A1FF006EB0D8 /* OptionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95534F81F71A1FF006EB0D8 /* OptionController.swift */; };
 		C95534FB1F71E116006EB0D8 /* DraftSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95534FA1F71E116006EB0D8 /* DraftSetup.swift */; };
+		C9712F081F7453DB00A9084E /* Draft Assist.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C9712F061F7453DB00A9084E /* Draft Assist.xcdatamodeld */; };
 		C9A109CA1F66FD2C00F92B2A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A109C91F66FD2C00F92B2A /* AppDelegate.swift */; };
 		C9A109CC1F66FD2C00F92B2A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A109CB1F66FD2C00F92B2A /* ViewController.swift */; };
 		C9A109CF1F66FD2C00F92B2A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9A109CD1F66FD2C00F92B2A /* Main.storyboard */; };
@@ -39,6 +40,7 @@
 /* Begin PBXFileReference section */
 		C95534F81F71A1FF006EB0D8 /* OptionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionController.swift; sourceTree = "<group>"; };
 		C95534FA1F71E116006EB0D8 /* DraftSetup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DraftSetup.swift; sourceTree = "<group>"; };
+		C9712F071F7453DB00A9084E /* Draft Assist.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Draft Assist.xcdatamodel"; sourceTree = "<group>"; };
 		C9A109C61F66FD2C00F92B2A /* Draft Assist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Draft Assist.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9A109C91F66FD2C00F92B2A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9A109CB1F66FD2C00F92B2A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				C9A109F71F67226A00F92B2A /* PlayerListCell.swift */,
 				C95534F81F71A1FF006EB0D8 /* OptionController.swift */,
 				C95534FA1F71E116006EB0D8 /* DraftSetup.swift */,
+				C9712F061F7453DB00A9084E /* Draft Assist.xcdatamodeld */,
 			);
 			path = "Draft Assist";
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9712F081F7453DB00A9084E /* Draft Assist.xcdatamodeld in Sources */,
 				C95534FB1F71E116006EB0D8 /* DraftSetup.swift in Sources */,
 				C9A109F81F67226A00F92B2A /* PlayerListCell.swift in Sources */,
 				C9A109CC1F66FD2C00F92B2A /* ViewController.swift in Sources */,
@@ -543,6 +547,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C9712F061F7453DB00A9084E /* Draft Assist.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C9712F071F7453DB00A9084E /* Draft Assist.xcdatamodel */,
+			);
+			currentVersion = C9712F071F7453DB00A9084E /* Draft Assist.xcdatamodel */;
+			path = "Draft Assist.xcdatamodeld";
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = C9A109BE1F66FD2C00F92B2A /* Project object */;
 }
