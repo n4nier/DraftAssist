@@ -32,25 +32,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             savePlayerTable()
         }
         
-        let fetchRequest2 = NSFetchRequest<NSManagedObject>(entityName: "Players")
-        
-        var returnedPlayers2: [NSManagedObject] = []
-        do {
-            returnedPlayers2 = try managedContext.fetch(fetchRequest2)
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
-        }
-        
-        for player in returnedPlayers2 {
-            let thisPlayer = player as! Players
-            print(thisPlayer.playerName!)
-            print(thisPlayer.goals)
-            print(thisPlayer.assists)
-        }
-        print(returnedPlayers2.count)
-        
-        
-        
         return true
     }
 
