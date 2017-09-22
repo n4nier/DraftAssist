@@ -120,7 +120,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="4Il-37-Dpi">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="4Il-37-Dpi">
                                 <rect key="frame" x="-235" y="28" width="548" height="30"/>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K8L-mp-LLo">
@@ -140,6 +140,7 @@
                             <constraint firstItem="BEo-8y-pZa" firstAttribute="leading" secondItem="K8L-mp-LLo" secondAttribute="leading" id="3QE-k8-ncL"/>
                             <constraint firstItem="4Il-37-Dpi" firstAttribute="centerX" secondItem="4wi-Hi-nG0" secondAttribute="centerX" constant="-148.5" id="6E0-2D-k0C"/>
                             <constraint firstItem="BEo-8y-pZa" firstAttribute="trailing" secondItem="K8L-mp-LLo" secondAttribute="trailing" id="B9o-Z6-kch"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="4Il-37-Dpi" secondAttribute="trailing" constant="46" id="CfM-lH-kSL"/>
                             <constraint firstItem="K8L-mp-LLo" firstAttribute="top" secondItem="4Il-37-Dpi" secondAttribute="top" id="Fm3-94-Wvq"/>
                             <constraint firstItem="BEo-8y-pZa" firstAttribute="top" secondItem="K8L-mp-LLo" secondAttribute="bottom" constant="8" symbolic="YES" id="f3R-o5-14E"/>
                             <constraint firstItem="K8L-mp-LLo" firstAttribute="leading" secondItem="4wi-Hi-nG0" secondAttribute="leadingMargin" id="hS8-Eg-Ve9"/>
