@@ -17,6 +17,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let managedContext = self.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Players")
+        
+        var returnedPlayers: [NSManagedObject] = []
+        do {
+            returnedPlayers = try managedContext.fetch(fetchRequest)
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        
+        if returnedPlayers.count == 0 {
+            savePlayerTable()
+        }
+        
+        let fetchRequest2 = NSFetchRequest<NSManagedObject>(entityName: "Players")
+        
+        var returnedPlayers2: [NSManagedObject] = []
+        do {
+            returnedPlayers2 = try managedContext.fetch(fetchRequest2)
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        
+        for player in returnedPlayers2 {
+            let thisPlayer = player as! Players
+            print(thisPlayer.playerName!)
+            print(thisPlayer.goals)
+            print(thisPlayer.assists)
+        }
+        print(returnedPlayers2.count)
+        
+        
+        
         return true
     }
 
@@ -86,6 +120,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-
+    
+    func savePlayerTable(){
+        CSVScanner.runFunctionOnRowsFromFile(theColumnNames: ["playerName", "goals", "assists", "pim", "ppp", "shp", "gwg", "blocks", "hits", "round"], withFileName: "DraftAssist", withFunction: {(aRow:Dictionary<String, String>) in
+            
+            let managedContext = self.persistentContainer.viewContext
+            
+            let playerEntity = NSEntityDescription.entity(forEntityName: "Players", in: managedContext)!
+            let player = NSManagedObject(entity: playerEntity, insertInto: managedContext) as! Players
+            
+            player.playerName = aRow["playerName"]
+            player.goals = Int32(aRow["goals"]!) ?? -1
+            player.assists = Int32(aRow["assists"]!) ?? -1
+            player.pim = Int32(aRow["pim"]!) ?? -1
+            player.ppp = Int32(aRow["ppp"]!) ?? -1
+            player.shp = Int32(aRow["shp"]!) ?? -1
+            player.gwg = Int32(aRow["gwg"]!) ?? -1
+            player.blocks = Int32(aRow["blocks"]!) ?? -1
+            player.hits = Int32(aRow["hits"]!) ?? -1
+            
+            // save locally
+            do {
+                try managedContext.save()
+                DispatchQueue.main.async {
+                    print("Imported players to core data")
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    print("Error importing notes to core data")
+                }
+                return
+            }
+        })
+    }
+    
 }
 
