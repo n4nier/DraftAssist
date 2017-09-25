@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import CoreData
 
 class DraftSetup: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var RoundList: UITableView!
     @IBOutlet weak var PlayerList: UITableView!
+    @IBOutlet weak var playerSearch: UISearchBar!
     
-    var playerArray: [String] = []
+    var playerArray: [NSManagedObject] = []
     var roundArray: [String] = []
     
     override func viewDidLoad() {
@@ -22,7 +24,18 @@ class DraftSetup: UIViewController, UITableViewDelegate, UITableViewDataSource {
         PlayerList.dataSource = self
         
         roundArray = []
-        playerArray = ["John", "Andy", "Dale"]
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Players")
+
+        do {
+            playerArray = try managedContext.fetch(fetchRequest)
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -49,7 +62,8 @@ class DraftSetup: UIViewController, UITableViewDelegate, UITableViewDataSource {
         }
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "testCell")
-            cell?.textLabel!.text = playerArray[indexPath.row]
+            let player = playerArray[indexPath.row] as! Players
+            cell?.textLabel!.text = player.playerName
             return cell!
         }
     }

@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
-        
+
         if returnedPlayers.count == 0 {
             savePlayerTable()
         }
@@ -134,6 +134,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         })
     }
-    
 }
 

@@ -43,7 +43,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         playerArray = ["John", "Andy", "Dale"]
     }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
