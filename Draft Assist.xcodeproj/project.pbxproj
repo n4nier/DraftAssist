@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5494B28C1F787B5100E4F6E2 /* DraftAssist.csv in Resources */ = {isa = PBXBuildFile; fileRef = 5494B28B1F787B5100E4F6E2 /* DraftAssist.csv */; };
 		C95534F91F71A1FF006EB0D8 /* OptionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95534F81F71A1FF006EB0D8 /* OptionController.swift */; };
 		C95534FB1F71E116006EB0D8 /* DraftSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95534FA1F71E116006EB0D8 /* DraftSetup.swift */; };
 		C9712F081F7453DB00A9084E /* Draft Assist.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C9712F061F7453DB00A9084E /* Draft Assist.xcdatamodeld */; };
 		C9712F0A1F757C2800A9084E /* CSVScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9712F091F757C2800A9084E /* CSVScanner.swift */; };
+		C99BF8DE1F79766A005F49DF /* DraftAssist.csv in Resources */ = {isa = PBXBuildFile; fileRef = C99BF8DD1F79766A005F49DF /* DraftAssist.csv */; };
 		C9A109CA1F66FD2C00F92B2A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A109C91F66FD2C00F92B2A /* AppDelegate.swift */; };
 		C9A109CC1F66FD2C00F92B2A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A109CB1F66FD2C00F92B2A /* ViewController.swift */; };
 		C9A109CF1F66FD2C00F92B2A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9A109CD1F66FD2C00F92B2A /* Main.storyboard */; };
@@ -40,11 +40,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5494B28B1F787B5100E4F6E2 /* DraftAssist.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = DraftAssist.csv; path = ../../../../Downloads/DraftAssist.csv; sourceTree = "<group>"; };
 		C95534F81F71A1FF006EB0D8 /* OptionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionController.swift; sourceTree = "<group>"; };
 		C95534FA1F71E116006EB0D8 /* DraftSetup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DraftSetup.swift; sourceTree = "<group>"; };
 		C9712F071F7453DB00A9084E /* Draft Assist.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Draft Assist.xcdatamodel"; sourceTree = "<group>"; };
 		C9712F091F757C2800A9084E /* CSVScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSVScanner.swift; sourceTree = "<group>"; };
+		C99BF8DD1F79766A005F49DF /* DraftAssist.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = DraftAssist.csv; path = ../../../Downloads/DraftAssist.csv; sourceTree = "<group>"; };
 		C9A109C61F66FD2C00F92B2A /* Draft Assist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Draft Assist.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9A109C91F66FD2C00F92B2A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9A109CB1F66FD2C00F92B2A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -120,7 +120,7 @@
 				C95534FA1F71E116006EB0D8 /* DraftSetup.swift */,
 				C9712F091F757C2800A9084E /* CSVScanner.swift */,
 				C9712F061F7453DB00A9084E /* Draft Assist.xcdatamodeld */,
-				5494B28B1F787B5100E4F6E2 /* DraftAssist.csv */,
+				C99BF8DD1F79766A005F49DF /* DraftAssist.csv */,
 			);
 			path = "Draft Assist";
 			sourceTree = "<group>";
@@ -252,7 +252,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9A109D41F66FD2C00F92B2A /* LaunchScreen.storyboard in Resources */,
-				5494B28C1F787B5100E4F6E2 /* DraftAssist.csv in Resources */,
+				C99BF8DE1F79766A005F49DF /* DraftAssist.csv in Resources */,
 				C9A109D11F66FD2C00F92B2A /* Assets.xcassets in Resources */,
 				C9A109CF1F66FD2C00F92B2A /* Main.storyboard in Resources */,
 			);

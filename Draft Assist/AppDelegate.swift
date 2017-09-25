@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         let managedContext = self.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Players")
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Player")
         
         var returnedPlayers: [NSManagedObject] = []
         do {
@@ -107,8 +107,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             let managedContext = self.persistentContainer.viewContext
             
-            let playerEntity = NSEntityDescription.entity(forEntityName: "Players", in: managedContext)!
-            let player = NSManagedObject(entity: playerEntity, insertInto: managedContext) as! Players
+            let playerEntity = NSEntityDescription.entity(forEntityName: "Player", in: managedContext)!
+            let player = NSManagedObject(entity: playerEntity, insertInto: managedContext) as! Player
             
             player.playerName = aRow["playerName"]
             player.goals = Int32(aRow["goals"]!) ?? -1
