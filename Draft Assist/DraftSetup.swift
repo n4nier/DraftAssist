@@ -13,6 +13,7 @@ class DraftSetup: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     @IBOutlet weak var roundList: UITableView!
     @IBOutlet weak var playerList: UITableView!
     @IBOutlet weak var playerSearch: UISearchBar!
+    @IBOutlet weak var roundLabel: UILabel!
     
     var playerArray: [NSManagedObject] = []
     var aRound: [Player] = []
@@ -20,6 +21,43 @@ class DraftSetup: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     var playerSearchResults: [Player] = []
     var searchActive: Bool = false
     var fromFiltered: Bool = false
+    var round: Int = 1
+    
+    @IBAction func saveButton(_ sender: UIButton) {
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Player")
+        
+        for player in aRound {
+            let playerName: String
+            playerName = player.playerName!
+            
+            let predicate = NSPredicate(format: "playerName = '\(playerName)'")
+            fetchRequest.predicate = predicate
+            do {
+                let playerSave = try managedContext.fetch(fetchRequest)
+                if playerSave.count == 1 {
+                    let objectUpdate = playerSave[0] as NSManagedObject
+                    objectUpdate.setValue(round, forKey: "round")
+                    do {
+                        try managedContext.save()
+                    } catch {
+                        print(error)
+                    }
+                }
+            } catch let error as NSError {
+                print("Could not fetch. \(error), \(error.userInfo)")
+            }
+        }
+        round = round + 1
+        roundLabel.text = "Round " + "'\(round)'"
+        aRound.removeAll()
+        self.roundList.reloadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +67,8 @@ class DraftSetup: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         roundList.delegate = self
         roundList.dataSource = self
         playerSearch.delegate = self
+        
+        roundLabel.text = "Round " + "\(round)"
 
         guard let appDelegate =
             UIApplication.shared.delegate as? AppDelegate else {
@@ -95,52 +135,39 @@ class DraftSetup: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView == self.playerList {
             let clickedRow: Player
-            if (fromFiltered) {
+            if (fromFiltered && !searchBarIsEmpty()) {
                 clickedRow = playerSearchResults[indexPath.row]
+                self.playerList.reloadData()
+                var removeAt: Int
+                for player in aPlayers {
+                    if player.playerName == clickedRow.playerName {
+                        removeAt = aPlayers.index(of: player)!
+                        aPlayers.remove(at: removeAt)
+                        self.playerList.beginUpdates()
+                        self.playerList.deleteRows(at: [IndexPath(row: removeAt, section: 0)], with: .fade)
+                        self.playerList.endUpdates()
+                        fromFiltered = false
+                    }
+                }
             } else {
                 clickedRow = aPlayers[indexPath.row]
+                aPlayers.remove(at: indexPath.row)
+                self.playerList.beginUpdates()
+                self.playerList.deleteRows(at: [IndexPath(row: indexPath.row, section: 0)], with: .fade)
+                self.playerList.endUpdates()
             }
             aRound.append(clickedRow)
             self.roundList.beginUpdates()
             self.roundList.insertRows(at: [IndexPath(row: aRound.count-1, section: 0)], with: .automatic)
             self.roundList.endUpdates()
-            
-            // Once you find it try to reload to original tableview and then delete?
-            // or on click from search add, reload, then delete elsewhere?
-            
-//            var removeAt: Int
-//            for player in aPlayers {
-//                if player.playerName == clickedRow.playerName {
-//                    removeAt = aPlayers.index(of: player)!
-//
-//                    if(!fromFiltered) {
-//                        aPlayers.remove(at: removeAt)
-//                        self.playerList.beginUpdates()
-//                        self.playerList.deleteRows(at: [IndexPath(row: removeAt, section: 0)], with: .fade)
-//                        self.playerList.endUpdates()
-//                    } else {
-//                        playerSearchResults.remove(at: indexPath.row)
-//                        self.playerList.beginUpdates()
-//                        self.playerList.deleteRows(at: [IndexPath(row: indexPath.row, section: 0)], with: .fade)
-//                        self.playerList.endUpdates()
-//                    }
-//                }
-//            }
-            
-            var removeAt: Int
-            for player in aPlayers {
-                if player.playerName == clickedRow.playerName {
-                    removeAt = aPlayers.index(of: player)!
-
-                    aPlayers.remove(at: removeAt)
-                    self.playerList.beginUpdates()
-                    self.playerList.deleteRows(at: [IndexPath(row: removeAt, section: 0)], with: .fade)
-                    self.playerList.endUpdates()
-                }
-            }
         } else {
             let clickedRow: Player
             clickedRow = aRound[indexPath.row]
+            aRound.remove(at: indexPath.row)
+            self.roundList.beginUpdates()
+            self.roundList.deleteRows(at: [IndexPath(row: indexPath.row, section: 0)], with: .fade)
+            self.roundList.endUpdates()
+            
             aPlayers.append(clickedRow)
             self.playerList.beginUpdates()
             self.playerList.insertRows(at: [IndexPath(row: aRound.count-1, section: 0)], with: .automatic)
@@ -159,17 +186,19 @@ class DraftSetup: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         
         if (playerSearchResults.count == 0) {
             searchActive = false;
+            fromFiltered = false;
         } else {
             searchActive = true;
+            fromFiltered = true;
         }
         self.playerList.reloadData()
     }
     
     //MARK: Search bar delegate functions
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchActive = true;
-        fromFiltered = true;
-    }
+//    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+//        searchActive = true;
+//        fromFiltered = true;
+//    }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         if searchActive == true {
@@ -189,6 +218,11 @@ class DraftSetup: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             fromFiltered = true
         }
         searchActive = false;
+    }
+    
+    func searchBarIsEmpty() -> Bool {
+         // Returns true if the text is empty or nil
+        return playerSearch.text?.isEmpty ?? true
     }
     
     @objc func dismissKeyboard() {

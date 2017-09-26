@@ -162,6 +162,19 @@
                                 <rect key="frame" x="0.0" y="272" width="375" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C6l-8p-MY5">
+                                <rect key="frame" x="325" y="34" width="34" height="30"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="saveButton:" destination="j4n-Fr-5Ot" eventType="touchUpInside" id="LJ6-gg-4kk"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FZA-aa-hqY">
+                                <rect key="frame" x="159" y="39" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -169,10 +182,14 @@
                             <constraint firstItem="JJz-aP-vGw" firstAttribute="top" secondItem="qM5-jn-FvB" secondAttribute="bottom" constant="43" id="667-o0-CqP"/>
                             <constraint firstItem="ttQ-Aq-TfY" firstAttribute="leading" secondItem="OdN-69-JYH" secondAttribute="leading" id="FKL-3l-6z9"/>
                             <constraint firstItem="ZkI-Kx-5qd" firstAttribute="top" secondItem="ttQ-Aq-TfY" secondAttribute="bottom" constant="22" id="FNv-wh-eZR"/>
+                            <constraint firstItem="C6l-8p-MY5" firstAttribute="trailing" secondItem="JJz-aP-vGw" secondAttribute="trailing" id="HcU-UM-I8b"/>
+                            <constraint firstItem="C6l-8p-MY5" firstAttribute="baseline" secondItem="2k7-SS-jRT" secondAttribute="baseline" id="K2V-us-37M"/>
                             <constraint firstAttribute="bottom" secondItem="ZkI-Kx-5qd" secondAttribute="bottom" constant="20" symbolic="YES" id="KDL-i6-qWY"/>
+                            <constraint firstItem="FZA-aa-hqY" firstAttribute="centerY" secondItem="2k7-SS-jRT" secondAttribute="centerY" id="RQy-Lb-rPS"/>
                             <constraint firstItem="2k7-SS-jRT" firstAttribute="leading" secondItem="OdN-69-JYH" secondAttribute="leadingMargin" id="VzF-mC-cLA"/>
                             <constraint firstItem="JJz-aP-vGw" firstAttribute="leading" secondItem="2k7-SS-jRT" secondAttribute="leading" id="YPF-Bj-5tX"/>
                             <constraint firstItem="ttQ-Aq-TfY" firstAttribute="centerX" secondItem="JJz-aP-vGw" secondAttribute="centerX" id="ZXE-Tl-kD2"/>
+                            <constraint firstItem="FZA-aa-hqY" firstAttribute="leading" secondItem="2k7-SS-jRT" secondAttribute="trailing" constant="97" id="bhH-gs-3J8"/>
                             <constraint firstItem="ttQ-Aq-TfY" firstAttribute="top" secondItem="JJz-aP-vGw" secondAttribute="bottom" constant="12" id="iis-wV-A2W"/>
                             <constraint firstItem="ZkI-Kx-5qd" firstAttribute="trailing" secondItem="OdN-69-JYH" secondAttribute="trailingMargin" id="l9M-h5-OFh"/>
                             <constraint firstItem="JJz-aP-vGw" firstAttribute="trailing" secondItem="ZkI-Kx-5qd" secondAttribute="trailing" id="oHz-uo-3on"/>
@@ -183,6 +200,7 @@
                         <outlet property="PlayerList" destination="ZkI-Kx-5qd" id="r9X-Q5-vge"/>
                         <outlet property="RoundList" destination="JJz-aP-vGw" id="gjO-QX-wg4"/>
                         <outlet property="playerSearch" destination="ttQ-Aq-TfY" id="jcy-zh-32U"/>
+                        <outlet property="roundLabel" destination="FZA-aa-hqY" id="eRj-Te-n7Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="njn-ya-nKe" userLabel="First Responder" sceneMemberID="firstResponder"/>
