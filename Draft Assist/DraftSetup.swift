@@ -15,18 +15,21 @@ class DraftSetup: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     @IBOutlet weak var playerSearch: UISearchBar!
     
     var playerArray: [NSManagedObject] = []
-    var roundArray: [String] = []
+    var aRound: [Player] = []
     var aPlayers: [Player] = []
     var playerSearchResults: [Player] = []
+    var searchActive: Bool = false
+    var fromFiltered: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         playerList.delegate = self
         playerList.dataSource = self
+        roundList.delegate = self
+        roundList.dataSource = self
         playerSearch.delegate = self
-        
-        roundArray = []
+
         guard let appDelegate =
             UIApplication.shared.delegate as? AppDelegate else {
                 return
@@ -45,42 +48,103 @@ class DraftSetup: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             aPlayers.append(player)
         }
         
-        playerList.tableHeaderView = playerSearch
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(DraftSetup.dismissKeyboard))
+        
+        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
+        tap.cancelsTouchesInView = false
+        
+        view.addGestureRecognizer(tap)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var Count: Int?
         if tableView == self.roundList {
-            Count = roundArray.count
+            Count = aRound.count
+        } else {
+            if (searchActive) {
+                Count = playerSearchResults.count
+            } else {
+                Count = aPlayers.count
+            }
         }
-        
-        if !searchBarIsEmpty() {
-            Count = playerSearchResults.count
-        }
-        
-        if tableView == self.playerList {
-            Count = playerArray.count
-        }
-        
         return Count!
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView == self.roundList {
             let cell = tableView.dequeueReusableCell(withIdentifier: "testCell1")
-            cell?.textLabel!.text = roundArray[indexPath.row]
-            return cell!
+            if !aRound.isEmpty {
+                let player: Player = aRound[indexPath.row]
+                cell?.textLabel!.text = player.playerName
+            }
+             return cell!
         }
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "testCell")
             let player: Player
-            if !searchBarIsEmpty() {
+            if (searchActive) {
                 player = playerSearchResults[indexPath.row]
             } else {
                 player = aPlayers[indexPath.row]
             }
             cell?.textLabel!.text = player.playerName
             return cell!
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView == self.playerList {
+            let clickedRow: Player
+            if (fromFiltered) {
+                clickedRow = playerSearchResults[indexPath.row]
+            } else {
+                clickedRow = aPlayers[indexPath.row]
+            }
+            aRound.append(clickedRow)
+            self.roundList.beginUpdates()
+            self.roundList.insertRows(at: [IndexPath(row: aRound.count-1, section: 0)], with: .automatic)
+            self.roundList.endUpdates()
+            
+            // Once you find it try to reload to original tableview and then delete?
+            // or on click from search add, reload, then delete elsewhere?
+            
+//            var removeAt: Int
+//            for player in aPlayers {
+//                if player.playerName == clickedRow.playerName {
+//                    removeAt = aPlayers.index(of: player)!
+//
+//                    if(!fromFiltered) {
+//                        aPlayers.remove(at: removeAt)
+//                        self.playerList.beginUpdates()
+//                        self.playerList.deleteRows(at: [IndexPath(row: removeAt, section: 0)], with: .fade)
+//                        self.playerList.endUpdates()
+//                    } else {
+//                        playerSearchResults.remove(at: indexPath.row)
+//                        self.playerList.beginUpdates()
+//                        self.playerList.deleteRows(at: [IndexPath(row: indexPath.row, section: 0)], with: .fade)
+//                        self.playerList.endUpdates()
+//                    }
+//                }
+//            }
+            
+            var removeAt: Int
+            for player in aPlayers {
+                if player.playerName == clickedRow.playerName {
+                    removeAt = aPlayers.index(of: player)!
+
+                    aPlayers.remove(at: removeAt)
+                    self.playerList.beginUpdates()
+                    self.playerList.deleteRows(at: [IndexPath(row: removeAt, section: 0)], with: .fade)
+                    self.playerList.endUpdates()
+                }
+            }
+        } else {
+            let clickedRow: Player
+            clickedRow = aRound[indexPath.row]
+            aPlayers.append(clickedRow)
+            self.playerList.beginUpdates()
+            self.playerList.insertRows(at: [IndexPath(row: aRound.count-1, section: 0)], with: .automatic)
+            self.playerList.endUpdates()
         }
     }
     
@@ -93,34 +157,42 @@ class DraftSetup: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             return player.playerName!.lowercased().contains(searchText.lowercased())
         })
         
-        playerList.reloadData()
-//        if (searchText == "") {
-//            searchActive = false;
-//        } else {
-//            searchActive = true;
-//        }
+        if (playerSearchResults.count == 0) {
+            searchActive = false;
+        } else {
+            searchActive = true;
+        }
+        self.playerList.reloadData()
     }
     
-    func searchBarIsEmpty() -> Bool {
-        // Returns true if the text is empty or nil
-        return playerSearch.text?.isEmpty ?? true
-    }
-    /*
     //MARK: Search bar delegate functions
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchActive = false;
+        searchActive = true;
+        fromFiltered = true;
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        if searchActive == true {
+            fromFiltered = true
+        }
         searchActive = false;
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchActive = false;
-        warrantiesTableView.reloadData()
+        fromFiltered = false;
+        self.playerList.reloadData()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if searchActive == true {
+            fromFiltered = true
+        }
         searchActive = false;
-    }*/
+    }
+    
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
 }

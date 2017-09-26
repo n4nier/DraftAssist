@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5403A28D1F79DD1400C13BCA /* DraftAssist.csv in Resources */ = {isa = PBXBuildFile; fileRef = 5403A28C1F79DD1300C13BCA /* DraftAssist.csv */; };
 		C95534F91F71A1FF006EB0D8 /* OptionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95534F81F71A1FF006EB0D8 /* OptionController.swift */; };
 		C95534FB1F71E116006EB0D8 /* DraftSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95534FA1F71E116006EB0D8 /* DraftSetup.swift */; };
 		C9712F081F7453DB00A9084E /* Draft Assist.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C9712F061F7453DB00A9084E /* Draft Assist.xcdatamodeld */; };
 		C9712F0A1F757C2800A9084E /* CSVScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9712F091F757C2800A9084E /* CSVScanner.swift */; };
-		C99BF8DE1F79766A005F49DF /* DraftAssist.csv in Resources */ = {isa = PBXBuildFile; fileRef = C99BF8DD1F79766A005F49DF /* DraftAssist.csv */; };
 		C9A109CA1F66FD2C00F92B2A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A109C91F66FD2C00F92B2A /* AppDelegate.swift */; };
 		C9A109CC1F66FD2C00F92B2A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A109CB1F66FD2C00F92B2A /* ViewController.swift */; };
 		C9A109CF1F66FD2C00F92B2A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9A109CD1F66FD2C00F92B2A /* Main.storyboard */; };
@@ -40,11 +40,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5403A28C1F79DD1300C13BCA /* DraftAssist.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = DraftAssist.csv; path = ../../../../Downloads/DraftAssist.csv; sourceTree = "<group>"; };
 		C95534F81F71A1FF006EB0D8 /* OptionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionController.swift; sourceTree = "<group>"; };
 		C95534FA1F71E116006EB0D8 /* DraftSetup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DraftSetup.swift; sourceTree = "<group>"; };
 		C9712F071F7453DB00A9084E /* Draft Assist.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Draft Assist.xcdatamodel"; sourceTree = "<group>"; };
 		C9712F091F757C2800A9084E /* CSVScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSVScanner.swift; sourceTree = "<group>"; };
-		C99BF8DD1F79766A005F49DF /* DraftAssist.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = DraftAssist.csv; path = ../../../Downloads/DraftAssist.csv; sourceTree = "<group>"; };
 		C9A109C61F66FD2C00F92B2A /* Draft Assist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Draft Assist.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9A109C91F66FD2C00F92B2A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9A109CB1F66FD2C00F92B2A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -120,7 +120,7 @@
 				C95534FA1F71E116006EB0D8 /* DraftSetup.swift */,
 				C9712F091F757C2800A9084E /* CSVScanner.swift */,
 				C9712F061F7453DB00A9084E /* Draft Assist.xcdatamodeld */,
-				C99BF8DD1F79766A005F49DF /* DraftAssist.csv */,
+				5403A28C1F79DD1300C13BCA /* DraftAssist.csv */,
 			);
 			path = "Draft Assist";
 			sourceTree = "<group>";
@@ -206,21 +206,24 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Nick Fournier";
 				TargetAttributes = {
 					C9A109C51F66FD2C00F92B2A = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = M8W83JP8GC;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 					C9A109D91F66FD2C00F92B2A = {
 						CreatedOnToolsVersion = 8.3.3;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						TestTargetID = C9A109C51F66FD2C00F92B2A;
 					};
 					C9A109E41F66FD2C00F92B2A = {
 						CreatedOnToolsVersion = 8.3.3;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						TestTargetID = C9A109C51F66FD2C00F92B2A;
 					};
@@ -252,9 +255,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9A109D41F66FD2C00F92B2A /* LaunchScreen.storyboard in Resources */,
-				C99BF8DE1F79766A005F49DF /* DraftAssist.csv in Resources */,
 				C9A109D11F66FD2C00F92B2A /* Assets.xcassets in Resources */,
 				C9A109CF1F66FD2C00F92B2A /* Main.storyboard in Resources */,
+				5403A28D1F79DD1400C13BCA /* DraftAssist.csv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,7 +353,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -358,7 +363,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -401,7 +410,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -409,7 +420,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -444,7 +459,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.NicksApps.Draft-Assist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -457,7 +473,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.NicksApps.Draft-Assist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -470,7 +487,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.NicksApps.Draft-AssistTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Draft Assist.app/Draft Assist";
 			};
 			name = Debug;
@@ -484,7 +502,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.NicksApps.Draft-AssistTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Draft Assist.app/Draft Assist";
 			};
 			name = Release;
@@ -497,7 +516,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.NicksApps.Draft-AssistUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = "Draft Assist";
 			};
 			name = Debug;
@@ -510,7 +530,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.NicksApps.Draft-AssistUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = "Draft Assist";
 			};
 			name = Release;
