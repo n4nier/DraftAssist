@@ -2,8 +2,8 @@
 //  CSVScanner.swift
 //  Draft Assist
 //
-//  Created by Nick Fournier on 2017-09-22.
-//  Copyright © 2017 Nick Fournier. All rights reserved.
+//  Created by Nick Fournier on 2017-09-19.
+//  Copyright © 2017 Nick Fournier. All rights reserved
 //
 
 import Foundation
