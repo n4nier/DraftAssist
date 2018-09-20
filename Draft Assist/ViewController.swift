@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import CoreData
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate {
     @IBOutlet weak var PlayerList: UITableView!
     @IBOutlet weak var RecommendedPlayer: UILabel!
     
-    var playerArray: [String] = []
+    var playerArray: [NSManagedObject] = []
+    var aPlayers: [Player] = []
     
     @IBAction func Options(_ sender: AnyObject) {
         let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "popOverID")
@@ -41,7 +43,24 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         PlayerList.delegate = self
         PlayerList.dataSource = self
         
-        playerArray = ["John", "Andy", "Dale"]
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        // Predicate
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Player")
+        
+        do {
+            playerArray = try managedContext.fetch(fetchRequest)
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        
+        for item in playerArray {
+            let player = item as! Player
+            aPlayers.append(player)
+        }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -53,9 +72,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! PlayerListCell
-        cell.PlayerName.text = playerArray[indexPath.row]
-        return cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")
+        let player: Player = aPlayers[indexPath.row]
+        cell?.textLabel!.text = player.playerName
+        return cell!
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

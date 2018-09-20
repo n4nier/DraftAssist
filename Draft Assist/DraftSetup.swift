@@ -54,7 +54,7 @@ class DraftSetup: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             }
         }
         round = round + 1
-        roundLabel.text = "Round " + "'\(round)'"
+        roundLabel.text = "Round " + "\(round)"
         aRound.removeAll()
         self.roundList.reloadData()
     }
