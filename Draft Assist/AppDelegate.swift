@@ -103,6 +103,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func savePlayerTable(){
+        var id = 1
         CSVScanner.runFunctionOnRowsFromFile(theColumnNames: ["playerName", "goals", "assists", "pim", "ppp", "shp", "gwg", "blocks", "hits", "round"], withFileName: "DraftAssist", withFunction: {(aRow:Dictionary<String, String>) in
             
             let managedContext = self.persistentContainer.viewContext
@@ -110,6 +111,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let playerEntity = NSEntityDescription.entity(forEntityName: "Player", in: managedContext)!
             let player = NSManagedObject(entity: playerEntity, insertInto: managedContext) as! Player
             
+            player.id = Int32(id)
             player.playerName = aRow["playerName"]
             player.goals = Int32(aRow["goals"]!) ?? -1
             player.assists = Int32(aRow["assists"]!) ?? -1
@@ -119,6 +121,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             player.gwg = Int32(aRow["gwg"]!) ?? -1
             player.blocks = Int32(aRow["blocks"]!) ?? -1
             player.hits = Int32(aRow["hits"]!) ?? -1
+            player.round = 0
             
             // save locally
             do {
@@ -132,6 +135,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
                 return
             }
+            
+            id += 1
         })
     }
 }

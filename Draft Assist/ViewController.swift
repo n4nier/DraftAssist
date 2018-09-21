@@ -15,24 +15,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     var playerArray: [NSManagedObject] = []
     var aPlayers: [Player] = []
-    
-    @IBAction func Options(_ sender: AnyObject) {
-        let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "popOverID")
-        
-        popController.modalPresentationStyle = UIModalPresentationStyle.popover
-        popController.preferredContentSize = CGSize(width: 200, height: 85)
-        
-        popController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.up
-        popController.popoverPresentationController?.delegate = self
-        popController.popoverPresentationController?.sourceView = (sender as! UIView)
-        popController.popoverPresentationController?.sourceRect = sender.bounds
-        
-        self.present(popController, animated: true, completion: nil)
-    }
-    
-    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
-        return UIModalPresentationStyle.none
-    }
+    var draftRound: Int = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,24 +26,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         PlayerList.delegate = self
         PlayerList.dataSource = self
         
-        guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else {
-                return
-        }
-        let managedContext = appDelegate.persistentContainer.viewContext
-        // Predicate
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Player")
-        
-        do {
-            playerArray = try managedContext.fetch(fetchRequest)
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
-        }
-        
-        for item in playerArray {
-            let player = item as! Player
-            aPlayers.append(player)
-        }
+        loadPlayers()
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -85,6 +51,83 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func myMethod() -> String
     {
         return "abc"
+    }
+    
+    func loadPlayers()
+    {
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Player")
+        fetchRequest.predicate = NSPredicate(format: "round > 0 AND round <= %ld", draftRound)
+        
+        do {
+            playerArray = try managedContext.fetch(fetchRequest)
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        
+        for item in playerArray {
+            let player = item as! Player
+            aPlayers.append(player)
+        }
+    }
+    
+    @IBAction func clearPressed(_ sender: Any) {
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Player")
+        
+        var allPlayers: [NSManagedObject] = []
+        do {
+            allPlayers = try managedContext.fetch(fetchRequest)
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        
+        for item in allPlayers {
+            let player = item as! Player
+            player.round = 0
+        }
+        
+        // save locally
+        do {
+            try managedContext.save()
+            DispatchQueue.main.async {
+                print("Saved clear")
+            }
+        } catch {
+            DispatchQueue.main.async {
+                print("Error importing notes to core data")
+            }
+            return
+        }
+        
+        loadPlayers()
+        self.PlayerList.reloadData()
+    }
+    
+    @IBAction func Options(_ sender: AnyObject) {
+        let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "popOverID")
+        
+        popController.modalPresentationStyle = UIModalPresentationStyle.popover
+        popController.preferredContentSize = CGSize(width: 200, height: 85)
+        
+        popController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.up
+        popController.popoverPresentationController?.delegate = self
+        popController.popoverPresentationController?.sourceView = (sender as! UIView)
+        popController.popoverPresentationController?.sourceRect = sender.bounds
+        
+        self.present(popController, animated: true, completion: nil)
+    }
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
     }
 }
 

@@ -33,10 +33,10 @@ class DraftSetup: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Player")
         
         for player in aRound {
-            let playerName: String
-            playerName = player.playerName!
+            let playerID: Int32
+            playerID = player.id
             
-            let predicate = NSPredicate(format: "playerName = '\(playerName)'")
+            let predicate = NSPredicate(format: "id = '\(playerID)'")
             fetchRequest.predicate = predicate
             do {
                 let playerSave = try managedContext.fetch(fetchRequest)
