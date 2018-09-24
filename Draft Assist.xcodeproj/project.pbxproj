@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0181FD44202FB9A90062C1B4 /* DraftAssist.csv in Resources */ = {isa = PBXBuildFile; fileRef = 0181FD43202FB9A90062C1B4 /* DraftAssist.csv */; };
+		C928469421594A4B006CFF74 /* CategoryValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = C928469321594A4B006CFF74 /* CategoryValues.swift */; };
 		C95534F91F71A1FF006EB0D8 /* OptionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95534F81F71A1FF006EB0D8 /* OptionController.swift */; };
 		C95534FB1F71E116006EB0D8 /* DraftSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95534FA1F71E116006EB0D8 /* DraftSetup.swift */; };
 		C9712F081F7453DB00A9084E /* Draft Assist.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C9712F061F7453DB00A9084E /* Draft Assist.xcdatamodeld */; };
@@ -41,6 +42,7 @@
 
 /* Begin PBXFileReference section */
 		0181FD43202FB9A90062C1B4 /* DraftAssist.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DraftAssist.csv; sourceTree = "<group>"; };
+		C928469321594A4B006CFF74 /* CategoryValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryValues.swift; sourceTree = "<group>"; };
 		C95534F81F71A1FF006EB0D8 /* OptionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionController.swift; sourceTree = "<group>"; };
 		C95534FA1F71E116006EB0D8 /* DraftSetup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DraftSetup.swift; sourceTree = "<group>"; };
 		C9712F071F7453DB00A9084E /* Draft Assist.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Draft Assist.xcdatamodel"; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				C9712F091F757C2800A9084E /* CSVScanner.swift */,
 				C9712F061F7453DB00A9084E /* Draft Assist.xcdatamodeld */,
 				0181FD43202FB9A90062C1B4 /* DraftAssist.csv */,
+				C928469321594A4B006CFF74 /* CategoryValues.swift */,
 			);
 			path = "Draft Assist";
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 				C9A109F81F67226A00F92B2A /* PlayerListCell.swift in Sources */,
 				C9A109CC1F66FD2C00F92B2A /* ViewController.swift in Sources */,
 				C95534F91F71A1FF006EB0D8 /* OptionController.swift in Sources */,
+				C928469421594A4B006CFF74 /* CategoryValues.swift in Sources */,
 				C9A109CA1F66FD2C00F92B2A /* AppDelegate.swift in Sources */,
 				C9712F0A1F757C2800A9084E /* CSVScanner.swift in Sources */,
 			);

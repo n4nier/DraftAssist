@@ -21,20 +21,29 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        RecommendedPlayer.text = myMethod()
+        let categorySettings = UserDefaults.standard
+        let categories = ["goals", "assists", "pim", "ppp", "shp", "gwg", "hits", "blocks"]
+        for category in categories {
+            if categorySettings.integer(forKey: category) == 0 {
+                categorySettings.set(1, forKey: category)
+            }
+        }
+        
+        loadPlayers()
+        
+        RecommendedPlayer.text = evaluatePlayers()
         
         PlayerList.delegate = self
         PlayerList.dataSource = self
-        
-        loadPlayers()
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return playerArray.count
+        return aPlayers.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -44,11 +53,54 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return cell!
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // Set round to default (0)
+            guard let appDelegate =
+                UIApplication.shared.delegate as? AppDelegate else {
+                    return
+            }
+            let playerID = self.aPlayers[indexPath.row].id
+            
+            let managedContext = appDelegate.persistentContainer.viewContext
+            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Player")
+            fetchRequest.predicate = NSPredicate(format: "id = %ld", playerID)
+            
+            var playerToDelete: [NSManagedObject] = []
+            do {
+                playerToDelete = try managedContext.fetch(fetchRequest)
+            } catch let error as NSError {
+                print("Could not fetch. \(error), \(error.userInfo)")
+            }
+            
+            for item in playerToDelete {
+                let player = item as! Player
+                player.round = 0
+            }
+            
+            // save locally
+            do {
+                try managedContext.save()
+                DispatchQueue.main.async {
+                    print("Saved delete")
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    print("Error importing notes to core data")
+                }
+                return
+            }
+            
+            self.aPlayers.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    func myMethod() -> String
+    func evaluatePlayers() -> String
     {
         return "abc"
     }

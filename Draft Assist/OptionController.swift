@@ -11,7 +11,9 @@ import UIKit
 class OptionController: UIViewController {
     @IBAction func NewDraft(_ sender: Any) {
     }
-   
+    @IBAction func CategoryValues(_ sender: Any) {
+    }
+    
     
     
     
