@@ -12,6 +12,7 @@ import CoreData
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate {
     @IBOutlet weak var PlayerList: UITableView!
     @IBOutlet weak var RecommendedPlayer: UILabel!
+    @IBOutlet weak var roundLabel: UILabel!
     
     var playerArray: [NSManagedObject] = []
     var aPlayers: [Player] = []
@@ -35,6 +36,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         PlayerList.delegate = self
         PlayerList.dataSource = self
+        
+        roundLabel.text = "Round " + "\(draftRound)" + ":"
+    }
+    
+    @IBAction func nextRound(_ sender: Any) {
+        draftRound += 1
+        roundLabel.text = "Round " + "\(draftRound)" + ":"
+        loadPlayers()
+        PlayerList.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -107,6 +117,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func loadPlayers()
     {
+        aPlayers = [Player]()
+        
         guard let appDelegate =
             UIApplication.shared.delegate as? AppDelegate else {
                 return
@@ -128,6 +140,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     @IBAction func clearPressed(_ sender: Any) {
+        draftRound = 1
+        roundLabel.text = "Round " + "\(draftRound)" + ":"
+        
         guard let appDelegate =
             UIApplication.shared.delegate as? AppDelegate else {
                 return
@@ -161,7 +176,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         
         loadPlayers()
-        self.PlayerList.reloadData()
+        PlayerList.reloadData()
     }
     
     @IBAction func Options(_ sender: AnyObject) {
