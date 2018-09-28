@@ -121,9 +121,9 @@
 				C95534F81F71A1FF006EB0D8 /* OptionController.swift */,
 				C95534FA1F71E116006EB0D8 /* DraftSetup.swift */,
 				C9712F091F757C2800A9084E /* CSVScanner.swift */,
+				C928469321594A4B006CFF74 /* CategoryValues.swift */,
 				C9712F061F7453DB00A9084E /* Draft Assist.xcdatamodeld */,
 				0181FD43202FB9A90062C1B4 /* DraftAssist.csv */,
-				C928469321594A4B006CFF74 /* CategoryValues.swift */,
 			);
 			path = "Draft Assist";
 			sourceTree = "<group>";

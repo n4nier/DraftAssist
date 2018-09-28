@@ -17,15 +17,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var playerArray: [NSManagedObject] = []
     var aPlayers: [Player] = []
     var draftRound: Int = 1
+    let categorySettings = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        let categorySettings = UserDefaults.standard
+        
         let categories = ["goals", "assists", "pim", "ppp", "shp", "gwg", "hits", "blocks"]
         for category in categories {
-            if categorySettings.integer(forKey: category) == 0 {
+            if categorySettings.float(forKey: category) == 0 {
                 categorySettings.set(1, forKey: category)
             }
         }
@@ -45,6 +46,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         roundLabel.text = "Round " + "\(draftRound)" + ":"
         loadPlayers()
         PlayerList.reloadData()
+        RecommendedPlayer.text = evaluatePlayers()
     }
     
     override func didReceiveMemoryWarning() {
@@ -112,7 +114,24 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     func evaluatePlayers() -> String
     {
-        return "abc"
+        var recommendedPlayer: String?
+        var bestScore: Float = 0
+        for player in aPlayers {
+            let goalsScore = (Float(player.goals) * categorySettings.float(forKey: "goals"))
+            let assistsScore = (Float(player.assists) * categorySettings.float(forKey: "assists"))
+            let pimScore = (Float(player.pim) * categorySettings.float(forKey: "pim"))
+            let pppScore = (Float(player.ppp) * categorySettings.float(forKey: "ppp"))
+            let shpScore = (Float(player.shp) * categorySettings.float(forKey: "shp"))
+            let gwgScore = (Float(player.gwg) * categorySettings.float(forKey: "gwg"))
+            let hitsScore = (Float(player.hits) * categorySettings.float(forKey: "hits"))
+            let blocksScore = (Float(player.blocks) * categorySettings.float(forKey: "blocks"))
+            
+            let sum = (goalsScore + assistsScore + pimScore + pppScore + shpScore + gwgScore + hitsScore + blocksScore)
+            recommendedPlayer = (sum > bestScore) ? player.playerName! : recommendedPlayer
+            bestScore = (sum > bestScore) ? sum : bestScore
+        }
+        
+        return recommendedPlayer ?? ""
     }
     
     func loadPlayers()
@@ -177,6 +196,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         loadPlayers()
         PlayerList.reloadData()
+        RecommendedPlayer.text = ""
     }
     
     @IBAction func Options(_ sender: AnyObject) {

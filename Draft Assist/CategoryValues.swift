@@ -26,14 +26,14 @@ class CategoryValues: UIViewController, UITextFieldDelegate {
 
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
         
-        Goals.text = String(categorySettings.integer(forKey: "goals"))
-        Assists.text = String(categorySettings.integer(forKey: "assists"))
-        PIM.text = String(categorySettings.integer(forKey: "pim"))
-        PPP.text = String(categorySettings.integer(forKey: "ppp"))
-        SHP.text = String(categorySettings.integer(forKey: "shp"))
-        GWG.text = String(categorySettings.integer(forKey: "gwg"))
-        Hits.text = String(categorySettings.integer(forKey: "hits"))
-        Blocks.text = String(categorySettings.integer(forKey: "blocks"))
+        Goals.text = String(categorySettings.float(forKey: "goals"))
+        Assists.text = String(categorySettings.float(forKey: "assists"))
+        PIM.text = String(categorySettings.float(forKey: "pim"))
+        PPP.text = String(categorySettings.float(forKey: "ppp"))
+        SHP.text = String(categorySettings.float(forKey: "shp"))
+        GWG.text = String(categorySettings.float(forKey: "gwg"))
+        Hits.text = String(categorySettings.float(forKey: "hits"))
+        Blocks.text = String(categorySettings.float(forKey: "blocks"))
     }
     
     override func didReceiveMemoryWarning() {
@@ -42,14 +42,14 @@ class CategoryValues: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func savePressed(_ sender: UIButton) {
-        categorySettings.set(Int(Goals.text ?? "1")!,forKey: "goals")
-        categorySettings.set(Int(Assists.text ?? "1")!,forKey: "assists")
-        categorySettings.set(Int(PIM.text ?? "1")!,forKey: "pim")
-        categorySettings.set(Int(PPP.text ?? "1")!,forKey: "ppp")
-        categorySettings.set(Int(SHP.text ?? "1")!,forKey: "shp")
-        categorySettings.set(Int(GWG.text ?? "1")!,forKey: "gwg")
-        categorySettings.set(Int(Hits.text ?? "1")!,forKey: "hits")
-        categorySettings.set(Int(Blocks.text ?? "1")!,forKey: "blocks")
+        categorySettings.set(Float((Goals.text!.isEmpty ? "1": Goals.text!)),forKey: "goals")
+        categorySettings.set(Float((Assists.text!.isEmpty ? "1" : Assists.text!)),forKey: "assists")
+        categorySettings.set(Float((PIM.text!.isEmpty ? "1" : PIM.text!)),forKey: "pim")
+        categorySettings.set(Float((PPP.text!.isEmpty ? "1" : PPP.text!)),forKey: "ppp")
+        categorySettings.set(Float((SHP.text!.isEmpty ? "1" : SHP.text!)),forKey: "shp")
+        categorySettings.set(Float((GWG.text!.isEmpty ? "1" : Hits.text!)),forKey: "gwg")
+        categorySettings.set(Float((Hits.text!.isEmpty ? "1" : Hits.text!)),forKey: "hits")
+        categorySettings.set(Float((Blocks.text!.isEmpty ? "1" : Blocks.text!)),forKey: "blocks")
     }
     @IBAction func NewDraftPressed(_ sender: Any) {
     }
