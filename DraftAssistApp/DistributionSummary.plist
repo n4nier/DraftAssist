@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Draft Assist.ipa</key>
+	<array>
+		<dict>
+			<key>architectures</key>
+			<array>
+				<string>armv7</string>
+				<string>arm64</string>
+			</array>
+			<key>certificate</key>
+			<dict>
+				<key>SHA1</key>
+				<string>ABF41ECEC85FDC3B4B434B10886DCD336A6135A2</string>
+				<key>dateExpires</key>
+				<string>2019-09-28</string>
+				<key>type</key>
+				<string>iOS Distribution</string>
+			</dict>
+			<key>entitlements</key>
+			<dict>
+				<key>application-identifier</key>
+				<string>JSZY8AYXNH.com.NicksApps.Draft-Assist</string>
+				<key>com.apple.developer.team-identifier</key>
+				<string>JSZY8AYXNH</string>
+				<key>get-task-allow</key>
+				<false/>
+				<key>keychain-access-groups</key>
+				<array>
+					<string>JSZY8AYXNH.com.NicksApps.Draft-Assist</string>
+				</array>
+			</dict>
+			<key>name</key>
+			<string>Draft Assist.app</string>
+			<key>profile</key>
+			<dict>
+				<key>UUID</key>
+				<string>e9668d5f-2d1a-41f1-b8dc-5e6bf0cc979d</string>
+				<key>name</key>
+				<string>iOS Team Ad Hoc Provisioning Profile: *</string>
+			</dict>
+			<key>team</key>
+			<dict>
+				<key>id</key>
+				<string>JSZY8AYXNH</string>
+				<key>name</key>
+				<string>Jason Chimney</string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>

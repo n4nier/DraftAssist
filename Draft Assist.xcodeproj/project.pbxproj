@@ -214,7 +214,7 @@
 				TargetAttributes = {
 					C9A109C51F66FD2C00F92B2A = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = M8W83JP8GC;
+						DevelopmentTeam = JSZY8AYXNH;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
@@ -462,7 +462,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = M8W83JP8GC;
+				DEVELOPMENT_TEAM = JSZY8AYXNH;
 				INFOPLIST_FILE = "Draft Assist/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.NicksApps.Draft-Assist";
@@ -476,7 +476,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = M8W83JP8GC;
+				DEVELOPMENT_TEAM = JSZY8AYXNH;
 				INFOPLIST_FILE = "Draft Assist/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.NicksApps.Draft-Assist";
