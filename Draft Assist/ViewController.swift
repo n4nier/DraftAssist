@@ -105,6 +105,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             self.aPlayers.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            RecommendedPlayer.text! = evaluatePlayers()
         }
     }
     
@@ -144,7 +145,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         let managedContext = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Player")
+        let sort = NSSortDescriptor(key: "playerName", ascending: true)
         fetchRequest.predicate = NSPredicate(format: "round > 0 AND round <= %ld", draftRound)
+        fetchRequest.sortDescriptors = [sort]
         
         do {
             playerArray = try managedContext.fetch(fetchRequest)
